@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Report</title>
+</head>
+<body>
+
+<h2>Stock Report – Sri Kottai Mariamman Textiles</h2>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>Item Name</th>
+        <th>HSN Code</th>
+        <th>Stock Quantity</th>
+    </tr>
+
+    {% for item in items %}
+    <tr>
+        <td>{{ item.name }}</td>
+        <td>{{ item.hsn.hsn_code }}</td>
+        <td>{{ item.stock_quantity }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profit & Loss Report</title>
+</head>
+<body>
+
+<h2>Profit & Loss Statement</h2>
+
+<p><strong>Total Sales:</strong> ₹ {{ total_sales }}</p>
+<p><strong>Total Purchases:</strong> ₹ {{ total_purchases }}</p>
+
+<hr>
+
+{% if profit >= 0 %}
+    <h3 style="color:green;">Net Profit: ₹ {{ profit }}</h3>
+{% else %}
+    <h3 style="color:red;">Net Loss: ₹ {{ profit }}</h3>
+{% endif %}
+
+</body>
+</html>

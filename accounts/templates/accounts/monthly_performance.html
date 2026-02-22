@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Monthly Performance</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<h2>Monthly Financial Performance – Sri Kottai Mariamman Textiles</h2>
+
+<canvas id="performanceChart" width="900" height="400"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script type="application/json" id="sales-data">
+    {{ sales|json_script:"salesData" }}
+</script>
+
+<script type="application/json" id="purchase-data">
+    {{ purchases|json_script:"purchaseData" }}
+</script>
+
+<script>
+    const salesData = JSON.parse(
+        document.getElementById('salesData').textContent
+    );
+    const purchaseData = JSON.parse(
+        document.getElementById('purchaseData').textContent
+    );
+
+    const labels = salesData.map(s =>
+        new Date(s.month).toLocaleString('en-IN', {
+            month: 'short',
+            year: 'numeric'
+        })
+    );
+
+    const salesTotals = salesData.map(s => s.total);
+    const purchaseTotals = purchaseData.map(p => p.total);
+
+    new Chart(document.getElementById('performanceChart'), {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Sales',
+                    data: salesTotals,
+                    backgroundColor: 'rgba(54, 162, 235, 0.7)'
+                },
+                {
+                    label: 'Purchases',
+                    data: purchaseTotals,
+                    backgroundColor: 'rgba(255, 99, 132, 0.7)'
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+</script>
+
+
+</body>
+</html>
