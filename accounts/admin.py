@@ -16,18 +16,26 @@ class CustomerAdmin(admin.ModelAdmin):
 @admin.register(Purchase)
 class PurchaseAdmin(admin.ModelAdmin):
     list_display = (
-        'invoice_no', 'supplier', 'taxable_value',
-        'gst_rate', 'cgst', 'sgst', 'igst',
-        'total_amount', 'is_interstate'
+        'item',
+        'quantity',
+        'rate',
+        'gst_percent',
+        'subtotal',
+        'gst_amount',
+        'total'
     )
 
 @admin.register(Sale)
 class SaleAdmin(admin.ModelAdmin):
     list_display = (
-        'invoice_no', 'customer', 'taxable_value',
-        'gst_rate', 'cgst', 'sgst', 'igst',
-        'total_amount', 'is_interstate'
-    )
+    'item',
+    'quantity',
+    'rate',
+    'gst_percent',
+    'subtotal',
+    'gst_amount',
+    'total'
+)
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
     list_display = ('name', 'get_hsn_code', 'unit', 'stock_quantity')

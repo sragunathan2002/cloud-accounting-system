@@ -21,3 +21,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('reports/', include('accounts.urls')),
 ]
+from django.shortcuts import redirect
+
+urlpatterns = [
+    path('', lambda request: redirect('/admin/')),
+    path('admin/', admin.site.urls),
+    path('reports/', include('accounts.urls')),
+]
